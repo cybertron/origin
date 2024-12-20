@@ -157,6 +157,7 @@ const (
 
 	LocatorAPIUnreachableHostKey                  LocatorKey = "host"
 	LocatorOnPremKubeapiUnreachableFromHaproxyKey LocatorKey = "onprem-haproxy"
+	LocatorOnPremVIPMonitorKey                    LocatorKey = "onprem-keepalived"
 
 	LocatorTypeKubeletSyncLoopProbeType LocatorKey = "probe"
 	LocatorTypeKubeletSyncLoopPLEGType  LocatorKey = "plegType"
@@ -232,6 +233,8 @@ const (
 	OnPremHaproxyDetectsDown  IntervalReason = "OnPremHaproxyDetectsDown"
 	OnPremHaproxyStatusChange IntervalReason = "OnPremHaproxyStatusChange"
 	OnPremLBPriorityChange    IntervalReason = "OnPremLBPriorityChange"
+	OnPremLBTookVIP           IntervalReason = "OnPremLBTookVIP"
+	OnPremLBLostVIP           IntervalReason = "OnPremLBLostVIP"
 
 	Timeout IntervalReason = "Timeout"
 
@@ -298,6 +301,7 @@ const (
 	AnnotationPercentage       AnnotationKey = "percentage"
 	AnnotationPriority         AnnotationKey = "priority"
 	AnnotationPreviousPriority AnnotationKey = "prev-priority"
+	AnnotationVIP              AnnotationKey = "vip"
 )
 
 // ConstructionOwner was originally meant to signify that an interval was derived from other intervals.
@@ -316,6 +320,7 @@ const (
 	ConstructionOwnerMachineLifecycle = "machine-lifecycle-constructor"
 	ConstructionOwnerLeaseChecker     = "lease-checker"
 	ConstructionOwnerOnPremHaproxy    = "on-prem-haproxy-constructor"
+	ConstructionOwnerOnPremKeepalived = "on-prem-keepalived-constructor"
 )
 
 type Message struct {
@@ -342,6 +347,7 @@ const (
 	SourceNetworkManagerLog         IntervalSource = "NetworkMangerLog"
 	SourceNodeMonitor               IntervalSource = "NodeMonitor"
 	SourceHaproxyMonitor            IntervalSource = "OnPremHaproxyMonitor"
+	SourceKeepalivedMonitor         IntervalSource = "OnPremKeepalivedMonitor"
 	SourceUnexpectedReady           IntervalSource = "NodeUnexpectedNotReady"
 	SourceUnreachable               IntervalSource = "NodeUnreachable"
 	SourceKubeletLog                IntervalSource = "KubeletLog"
